@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "896102977997",
+    "firebase_url": "https://fashioncamera-d1298.firebaseio.com",
+    "project_id": "fashioncamera-d1298",
+    "storage_bucket": "fashioncamera-d1298.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896102977997:android:1e55812783c010b276b484",
+        "android_client_info": {
+          "package_name": "com.example.hackcation2020"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896102977997-geb1mjtnarm866pcng2c0qgb46aj44rg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUjLHUu230jEI8Vt2rFXAnVCq7h2wEpDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896102977997-geb1mjtnarm866pcng2c0qgb46aj44rg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
