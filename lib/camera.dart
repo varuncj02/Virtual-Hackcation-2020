@@ -6,16 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
+//List<CameraDescription> cameras;
 Future<void> main() async {
   // Ensure that plugin services are initialized so that `availableCameras()`
   // can be called before `runApp()`
   WidgetsFlutterBinding.ensureInitialized();
 
   // Obtain a list of the available cameras on the device.
-  final cameras = await availableCameras();
+  //cameras = await availableCameras();
 
   // Get a specific camera from the list of available cameras.
-  final firstCamera = cameras.first;
+  // final firstCamera = cameras.first;
 
   runApp(
     MaterialApp(
@@ -23,10 +24,22 @@ Future<void> main() async {
       home: TakePictureScreen(
           // Pass the appropriate camera to the TakePictureScreen widget.
           // camera: firstCamera,
+          //camera: cameras[0],
           ),
     ),
   );
+  // runApp(StatelessPicture());
 }
+
+/*class StatelessPicture extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData.dark(),
+      home: TakePictureScreen(cameras[0]),
+    );
+  }
+}*/
 
 // A screen that allows users to take a picture using a given camera.
 class TakePictureScreen extends StatefulWidget {
@@ -42,19 +55,28 @@ class TakePictureScreen extends StatefulWidget {
 }
 
 class TakePictureScreenState extends State<TakePictureScreen> {
-  CameraController _controller;
+  CameraController controller;
   Future<void> _initializeControllerFuture;
+  bool isCameraReady = false;
 
   Future<void> setUpCamera() async {
     WidgetsFlutterBinding.ensureInitialized();
     final cameras = await availableCameras();
     final firstCamera = cameras.first;
 
-    _controller = CameraController(
+    controller = CameraController(
       firstCamera,
       ResolutionPreset.medium,
     );
-    _initializeControllerFuture = _controller.initialize();
+    _initializeControllerFuture = controller.initialize();
+
+    if (!mounted) {
+      return;
+    }
+
+    setState(() {
+      isCameraReady = true;
+    });
   }
 
   @override
@@ -62,6 +84,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     super.initState();
     // To display the current output from the Camera,
     // create a CameraController.
+
     setUpCamera();
     /* _controller = CameraController(
       // Get a specific camera from the list of available cameras.
@@ -77,7 +100,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   @override
   void dispose() {
     // Dispose of the controller when the widget is disposed.
-    _controller.dispose();
+    controller.dispose();
     super.dispose();
   }
 
@@ -93,7 +116,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             // If the Future is complete, display the preview.
-            return CameraPreview(_controller);
+            return CameraPreview(controller);
           } else {
             // Otherwise, display a loading indicator.
             return Center(child: CircularProgressIndicator());
@@ -120,7 +143,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
             );
 
             // Attempt to take a picture and log where it's been saved.
-            await _controller.takePicture(path);
+            await controller.takePicture(path);
 
             // If the picture was taken, display it on a new screen.
             Navigator.push(
