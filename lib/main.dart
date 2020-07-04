@@ -141,7 +141,7 @@ class DisplayPictureScreen extends StatelessWidget {
       // constructor with the given path to display the image.
       body: Column(
         children: [
-        ImageBanner("images/tshirt.jpg"),
+        ImageBanner("images/share.png"),
         ],
     ));
   }
