@@ -9,6 +9,7 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:hackcation2020/cameraBottom.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 //import IconButton from '@material-ui/core/IconButton';
@@ -158,6 +159,11 @@ class _FrontPageState extends State<FrontPage> {
                         onPressed: () {
                           // Code to Navigate to the Camera Plugin from Karthik Mohans Code
                           //Gonna use Navigate Push
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TakePictureScreen(),
+                              ));
                         },
                         // Navigate to a specific Top Camera
                         child: Text('Top Camera'),
@@ -173,7 +179,7 @@ class _FrontPageState extends State<FrontPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => TakePictureScreen(),
+                                builder: (context) => TakeBottomScreen(),
                               ));
                           //};
                         },
