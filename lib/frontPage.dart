@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:math';
 
+import 'package:hackcation2020/camera.dart';
+
+import 'dart:async';
+import 'dart:io';
+
+import 'package:camera/camera.dart';
+import 'package:flutter/material.dart';
+import 'package:path/path.dart' show join;
+import 'package:path_provider/path_provider.dart';
 //import IconButton from '@material-ui/core/IconButton';
 
 /**
@@ -160,6 +169,13 @@ class _FrontPageState extends State<FrontPage> {
                         onPressed: () {
                           // Code to Navigate to the Camera Plugin from Karthik Mohans Code
                           //Gonna use Navigate Push
+                          // Gonna need to have 2 different camera classes which are literally a copy of each other
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TakePictureScreen(),
+                              ));
+                          //};
                         },
                         // Navigate to a specific Bottom Camera
                         child: Text('Bottom Camera'),
