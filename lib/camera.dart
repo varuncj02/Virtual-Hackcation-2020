@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
+List<String> imageStorage = [];
 //List<CameraDescription> cameras;
 Future<void> main() async {
   // Ensure that plugin services are initialized so that `availableCameras()`
@@ -61,6 +62,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   CameraController controller;
   Future<void> _initializeControllerFuture;
   bool isCameraReady = false;
+  List <String> stringlist = []; 
 
   Future<void> setUpCamera() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -81,6 +83,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
       isCameraReady = true;
     });
   }
+ 
 
   @override
   void initState() {
@@ -147,12 +150,13 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
             // Attempt to take a picture and log where it's been saved.
             await controller.takePicture(path);
+            stringlist.add(path);
 
             // If the picture was taken, display it on a new screen.
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => DisplayPictureScreen(imagePath: path),
+                builder: (context) => DisplayPictureScreen(imagePath: path,)
               ),
             );
           } catch (e) {
@@ -168,11 +172,20 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 // A widget that displays the picture taken by the user.
 class DisplayPictureScreen extends StatelessWidget {
   final String imagePath;
-
-  const DisplayPictureScreen({Key key, this.imagePath}) : super(key: key);
+  List <String> images = List<String>(); 
+  DisplayPictureScreen({Key key, this.imagePath,}  ) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+   // List <String> strings = []; 
+    imageStorage.add(imagePath);
+
+    images.add(imagePath);
+    images.add('little string');
+    print(imageStorage.length);
+    print(images[0]);
+    print(images[1]);
+    print(images[2]);
     GallerySaver.saveImage(imagePath);
     return Scaffold(
       appBar: AppBar(title: Text('Display the Picture')),
@@ -180,5 +193,6 @@ class DisplayPictureScreen extends StatelessWidget {
       // constructor with the given path to display the image.
       body: Image.file(File(imagePath)),
     );
-  }
+  } 
+   
 }
