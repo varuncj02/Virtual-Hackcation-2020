@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackcation2020/imageadd.dart';
+import 'package:hackcation2020/profile.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: ImageBanner("images/t-shirt.jpg"),
+      home: ProfilePage(),
     );
   }
 }
