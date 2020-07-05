@@ -230,7 +230,7 @@ class FrontPageState extends State<FrontPage> {
                         child: Text('Top Camera'),
                       ),
                     ),
-                    Expanded(
+                    /*Expanded(
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
@@ -250,7 +250,7 @@ class FrontPageState extends State<FrontPage> {
                         // Navigate to a specific Bottom Camera
                         child: Text('Bottom Camera'),
                       ),
-                    ),
+                    ),*/
                     Expanded(
                       child: RaisedButton(
                           shape: RoundedRectangleBorder(
