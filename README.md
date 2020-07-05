@@ -1,5 +1,7 @@
 # Hackcation2020
  
+ Side-Note : The working branch of this app is under the "final-integration" branch
+ 
  ## Inspiration
 Starting out as freshman in college a year ago we realized that we did not have a lot of time to spare and found ourselves really busy. At the same time we all wanted to dress good and go to classes. Selecting the correct outfit takes a lot of time and effort and most people do not find the time to do so. They want to look good but also do not want to spend too much time. In order, to reduce the time they would have to spend we automated the process of matching the top and bottom leading to them being able to check how their outfit looks by just swiping through the available options and without having to wear it physically. The time saved can be used for other activities on the college campus.
 
