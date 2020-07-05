@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:image_picker/image_picker.dart';
+import 'package:gallery_saver/gallery_saver.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
@@ -134,6 +136,8 @@ class DisplayPictureScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //_takePhoto();
+    GallerySaver.saveImage(imagePath);
     return Scaffold(
       appBar: AppBar(title: Text('Display the Picture')),
       // The image is stored as a file on the device. Use the `Image.file`
@@ -141,4 +145,12 @@ class DisplayPictureScreen extends StatelessWidget {
       body: Image.file(File(imagePath)),
     );
   }
+
+  /*void _takePhoto() async {
+    ImagePicker.pickImage(source: ImageSource.camera).then((File imagePath) {
+      if (imagePath != null) {
+        GallerySaver.saveImage(imagePath.path);
+      }
+    });
+  }*/
 }
