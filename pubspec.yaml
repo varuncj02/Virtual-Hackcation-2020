@@ -25,6 +25,8 @@ dependencies:
     sdk: flutter
    
 
+  image_picker: ^0.6.7+3
+  gallery_saver: ^2.0.1 
   camera: ^0.5.8+2
   path_provider: ^1.6.11
   path: ^1.6.4
