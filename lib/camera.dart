@@ -178,14 +178,6 @@ class DisplayPictureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
    // List <String> strings = []; 
-    imageStorage.add(imagePath);
-
-    images.add(imagePath);
-    images.add('little string');
-    print(imageStorage.length);
-    print(images[0]);
-    print(images[1]);
-    print(images[2]);
     GallerySaver.saveImage(imagePath);
     return Scaffold(
       appBar: AppBar(title: Text('Display the Picture')),
