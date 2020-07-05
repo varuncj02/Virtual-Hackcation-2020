@@ -39,7 +39,7 @@ class FrontPageState extends State<FrontPage> {
   List<String> sampleTops = [
     "top/Black Top.jpg",
     "top/Grey Top.jpg",
-    "top/White Top.jpg",
+    "top/White top.jpg",
   ];
 
   //Same Logic Needed Above
@@ -163,9 +163,13 @@ class FrontPageState extends State<FrontPage> {
                     ),
                   ),
                   Expanded(
-                    flex: 2,
+                    flex: 1,
                     //child: Image.asset("images/gucci.jpg"),
-                    child: Image.asset(sampleTops[topIndex]),
+                    child: Image.asset(
+                      sampleTops[topIndex],
+                      scale: 10,
+                      fit: BoxFit.fitWidth,
+                    ),
                   ),
                   Expanded(
                     child: IconButton(
@@ -191,7 +195,7 @@ class FrontPageState extends State<FrontPage> {
                     ),
                   ),
                   Expanded(
-                    flex: 2,
+                    flex: 1,
                     child: Image.asset(sampleBottoms[bottomIndex]),
                   ),
                   Expanded(
