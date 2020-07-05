@@ -30,6 +30,8 @@ class FrontPage extends StatefulWidget {
 }
 
 class _FrontPageState extends State<FrontPage> {
+  int clothingCounter = 0; // Needs to be value from the UserProfile
+
   // This list will just copy the 2 lists from the Camera stored by Bharath
   // The copying happens by enterting the 2 lists as parameters in constructors
   // Right now these are just hardcoded values
@@ -48,6 +50,16 @@ class _FrontPageState extends State<FrontPage> {
 
   int topIndex = 0;
   int bottomIndex = 0;
+
+  int getClothingCounter() {
+    return clothingCounter;
+  }
+
+  void _incrementClothingCounter() {
+    setState(() {
+      clothingCounter++;
+    });
+  }
 
   void _incrementListItemTop() {
     setState(() {
@@ -77,12 +89,49 @@ class _FrontPageState extends State<FrontPage> {
     });
   }
 
+  void _showDialog() {
+    // flutter defined function
+    _incrementClothingCounter();
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        print(getClothingCounter());
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Confimation"),
+          content: new Text("Outfit Confirmed"),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text('App Screen'),
+        actions: <Widget>[
+          FlatButton(
+            textColor: Colors.black,
+            onPressed: () {},
+            //child: Text("Badges"),
+            child: IconButton(
+              icon: Icon(Icons.arrow_forward_ios),
+              onPressed: () {},
+            ),
+            shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+          ),
+        ],
       ),
       body: Align(
         alignment: Alignment.topCenter,
@@ -154,7 +203,10 @@ class _FrontPageState extends State<FrontPage> {
                   //mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Expanded(
-                      child: FlatButton(
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.blue)),
                         color: Colors.blueAccent,
                         onPressed: () {
                           // Code to Navigate to the Camera Plugin from Karthik Mohans Code
@@ -170,7 +222,10 @@ class _FrontPageState extends State<FrontPage> {
                       ),
                     ),
                     Expanded(
-                      child: FlatButton(
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.blue)),
                         color: Colors.blueAccent,
                         onPressed: () {
                           // Code to Navigate to the Camera Plugin from Karthik Mohans Code
@@ -187,6 +242,22 @@ class _FrontPageState extends State<FrontPage> {
                         child: Text('Bottom Camera'),
                       ),
                     ),
+                    Expanded(
+                      child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              side: BorderSide(color: Colors.red)),
+                          child: IconButton(
+                              icon: Icon(Icons.check),
+                              onPressed: () {
+                                _showDialog();
+                                // Selected confirmation must appear
+                              }),
+                          onPressed: () {
+                            // Selected confirmation must appear
+                            _showDialog();
+                          }),
+                    )
                   ],
                 ),
               )),
