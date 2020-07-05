@@ -37,16 +37,16 @@ class FrontPageState extends State<FrontPage> {
   // The copying happens by enterting the 2 lists as parameters in constructors
   // Right now these are just hardcoded values
   List<String> sampleTops = [
-    "images/gucci.jpg",
-    "images/shirt1.jpg",
-    "images/shirt2.jpg",
+    "top/Black Top.jpg",
+    "top/Grey Top.jpg",
+    "top/White Top.jpg",
   ];
 
   //Same Logic Needed Above
   List<String> sampleBottoms = [
-    "images/jeans.jpg",
-    "images/jeans2.jpg",
-    "images/jeans3.jpg",
+    "bottom/Black Trackpant.jpg",
+    "bottom/Blue Gym Shorts.jpg",
+    "bottom/Green Gym Shorts.jpg",
   ];
 
   int topIndex = 0;
