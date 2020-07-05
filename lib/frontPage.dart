@@ -10,6 +10,7 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:hackcation2020/cameraBottom.dart';
+import 'package:hackcation2020/profile.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 //import IconButton from '@material-ui/core/IconButton';
@@ -26,10 +27,10 @@ import 'package:path_provider/path_provider.dart';
 
 class FrontPage extends StatefulWidget {
   @override
-  _FrontPageState createState() => _FrontPageState();
+  FrontPageState createState() => FrontPageState();
 }
 
-class _FrontPageState extends State<FrontPage> {
+class FrontPageState extends State<FrontPage> {
   int clothingCounter = 0; // Needs to be value from the UserProfile
 
   // This list will just copy the 2 lists from the Camera stored by Bharath
@@ -127,7 +128,15 @@ class _FrontPageState extends State<FrontPage> {
             //child: Text("Badges"),
             child: IconButton(
               icon: Icon(Icons.arrow_forward_ios),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfilePage(
+                        clothingcounter: getClothingCounter(),
+                      ),
+                    ));
+              },
             ),
             shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
           ),
